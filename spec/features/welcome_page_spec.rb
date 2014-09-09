@@ -5,6 +5,7 @@ feature "Welcome Page" do
   end
   scenario "nav bar contents" do
     visit root_path
+    expect(page).to have_link("Support Nashville")
     expect(page).to have_link("Services")
     expect(page).to have_link("Search")
     expect(page).to have_link("Map")
