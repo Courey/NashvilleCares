@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 #ruby-gemset=NashvilleCares
 
+gem 'foundation-rails'
 gem 'haml'
 gem 'rails', '4.1.5'
 gem 'pg'
