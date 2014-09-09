@@ -3,8 +3,11 @@ feature "Welcome Page" do
     visit root_path
     expect(page).to have_content("Support Nashville is a community maintained database of social programs for low income residents of Nashville and surrounding areas.")
   end
-  # scenario "nav bar contents" do
-  #   visit root_path
-  #   expect(page).to have_content("Home")
-  # end
+  scenario "nav bar contents" do
+    visit root_path
+    expect(page).to have_link("Services")
+    expect(page).to have_link("Search")
+    expect(page).to have_link("Map")
+    expect(page).to have_link("About")
+  end
 end

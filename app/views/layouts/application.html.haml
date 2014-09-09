@@ -8,5 +8,47 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
   %body
+    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+      %ul.title-area
+        %li.name
+          %h1
+            %a{:href => "#"} Support Nashville
+        %li.toggle-topbar.menu-icon
+          %a{:href => "#"}
+            %span Menu
+      %section.top-bar-section
+
+        %ul.right
+          %li
+            %a{:href => "#"} Search
+          %li
+            %a{:href => "#"} Map
+          %li
+            %a{:href => "#"} About
+        %ul.left
+          %li.has-dropdown
+            %a{:href => "#"} Services
+            %ul.dropdown
+              %li
+                %a{:href => "#"} Food
+              %li
+                %a{:href => "#"} Housing
+              %li
+                %a{:href => "#"} Utilities
+              %li
+                %a{:href => "#"} Health
+              %li
+                %a{:href => "#"} Mental Health
+              %li
+                %a{:href => "#"} Disability
+              %li
+                %a{:href => "#"} Domestic Violence
+              %li
+                %a{:href => "#"} Legal
+              %li
+                %a{:href => "#"} Financial
+              %li
+                %a{:href => "#"} Job
+
     = yield
     = javascript_include_tag "application"
