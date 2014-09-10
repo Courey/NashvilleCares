@@ -1,0 +1,2 @@
+Fabricator(:service) do
+end
