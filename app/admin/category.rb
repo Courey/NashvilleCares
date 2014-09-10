@@ -13,6 +13,7 @@ ActiveAdmin.register Category do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+  actions :all, :except => [:destroy]
   permit_params :name
 
 end
