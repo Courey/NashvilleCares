@@ -1,0 +1,7 @@
+#service
+  %h1#service_name= @service.name
+  = link_to "#{@service.website}"
+  %h3= @service.location
+  %h3= @service.phone
+  %p= @service.description
+  %p= @service.offered_services
