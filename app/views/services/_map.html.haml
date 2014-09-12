@@ -1,0 +1,11 @@
+%div#map_wrapper
+  #map
+
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    handler.getMap().setZoom(9);
+    handler.getMap().setCenter(new google.maps.LatLng(36.17, -86.77));
+  });
