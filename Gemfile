@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 #ruby-gemset=NashvilleCares
 
+gem 'gmaps4rails'
 gem 'geocoder'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'

@@ -81,6 +81,7 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     geocoder (1.2.4)
+    gmaps4rails (2.1.2)
     haml (4.0.5)
       tilt
     has_scope (0.6.0.rc)
@@ -210,6 +211,7 @@ DEPENDENCIES
   fabrication
   foundation-rails
   geocoder
+  gmaps4rails
   haml
   jbuilder (~> 2.0)
   jquery-rails

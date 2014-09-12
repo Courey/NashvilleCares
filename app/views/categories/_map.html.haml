@@ -1,0 +1,25 @@
+%div#map_wrapper
+  #map
+-# = yield :javascripts
+-# - content_for :javascripts do
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    // markers = handler.addMarkers([
+    //   {
+    //     "lat": 0,
+    //     "lng": 0,
+    //     "picture": {
+    //       "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+    //       "width":  36,
+    //       "height": 36
+    //     },
+    //     "infowindow": "hello!"
+    //   }
+    // ]);
+    // handler.bounds.extendWith(markers);
+    handler.getMap().setZoom(9);
+    handler.getMap().setCenter(new google.maps.LatLng(36.17, -86.77));
+  });

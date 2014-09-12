@@ -1,3 +1,7 @@
 %h1= @category.name
 - @category.services.each do |var|
   = link_to "#{var.name}", service_path(var)
+
+
+-# = yield :javascripts
+= render partial: "categories/map"
