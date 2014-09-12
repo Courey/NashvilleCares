@@ -13,7 +13,4 @@ class CategoriesController < ApplicationController
       marker.infowindow service.name
     end
   end
-
-
-
 end
