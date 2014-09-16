@@ -63,7 +63,47 @@
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
-// $base-font-size: 100%;
+$base-font-size: 100%;
+
+//****************************************
+
+$em-base: 16px !default;
+
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Converts "px" to "em" using the ($)em-base
+@function convert-to-em($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
+  @return $value;
+}
+
+// Working in ems is annoying. Think in pixels by using this handy function, em-calc(#)
+// Just enter the number, no need to mention "px"
+@function em-calc($values, $base-value: $em-base) {
+  $max: length($values); // Get the total number of parameters passed
+
+  // If there is only 1 parameter, then return it as an integer.
+  // This is done because a list can't be multiplied or divided even if it contains a single value
+  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+
+  $emValues: (); // This will eventually store the converted $values in a list
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+  }
+  @return $emValues;
+}
+
+//Retaining this for backward compatability
+
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+//****************************************
 
 // The $base-font-size is 100% while $base-line-height is 150%
 // $base-line-height: 150%;
@@ -71,7 +111,7 @@
 // We use this to control whether or not CSS classes come through in the gem files.
 $include-html-classes: true;
 // $include-print-styles: true;
-$include-html-global-classes: $include-html-classes;
+// $include-html-global-classes: $include-html-classes;
 
 // b. Grid
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -114,7 +154,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
+$secondary-color: #333333;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -445,16 +485,16 @@ $include-html-global-classes: $include-html-classes;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: -20%;
+$button-function-factor: -20%;
 
 // We use these to control button border and hover styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $button-bg-color: $primary-color;
-// $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
-// $button-border-color: $button-bg-hover;
-// $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
-// $secondary-button-border-color: $secondary-button-bg-hover;
+$button-bg-color: $secondary-color;
+$button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
+$button-border-color: $button-bg-hover;
+$secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
+$secondary-button-border-color: $secondary-button-bg-hover;
 // $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
 // $success-button-border-color: $success-button-bg-hover;
 // $alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor);
@@ -557,7 +597,7 @@ $include-html-global-classes: $include-html-classes;
 // 09. Dropdown Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-button-classes: $include-html-classes;
+$include-html-button-classes: $include-html-classes;
 
 // We use these to set the color of the pip in dropdown buttons
 // $dropdown-button-pip-color: $white;
@@ -1213,7 +1253,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use these to control the active item styles
 // $sub-nav-active-font-weight: $font-weight-normal;
-// $sub-nav-active-bg: $primary-color;
+$sub-nav-active-bg: $secondary-color;
 // $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
 // $sub-nav-active-color: $white;
 // $sub-nav-active-padding: $sub-nav-padding;
@@ -1358,11 +1398,11 @@ $include-html-global-classes: $include-html-classes;
 // 34. Top Bar
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-top-bar-classes: $include-html-classes;
+$include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: $oil;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: $secondary-color;
+$topbar-bg: $secondary-color;
 
 // Height and margin
 // $topbar-height: 45px;
@@ -1373,9 +1413,9 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: $oil;
+$topbar-dropdown-bg: $secondary-color;
 // $topbar-dropdown-link-color: $white;
-// $topbar-dropdown-link-bg: $oil;
+$topbar-dropdown-link-bg: $secondary-color;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;
@@ -1388,12 +1428,12 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-link-color-active-hover: $white;
 // $topbar-link-weight: $font-weight-normal;
 // $topbar-link-font-size: rem-calc(13);
-// $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-color-hover: $charcoal;
-// $topbar-link-bg-hover: #272727;
-// $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-hover-lightness: -10%; // Darken by 10%
+$topbar-link-bg: $topbar-bg;
+$topbar-link-bg-color-hover: scale-color($secondary-color, $lightness: -14%);
+$topbar-link-bg-hover: scale-color($secondary-color, $lightness: -14%);
+$topbar-link-bg-active: $secondary-color;
+$topbar-link-bg-active-hover: scale-color($secondary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: $topbar-height / 3;
@@ -1403,11 +1443,11 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-button-font-size: 0.75rem;
 // $topbar-button-top: 7px;
 
-// $topbar-dropdown-label-color: $monsoon;
+$topbar-dropdown-label-color: $secondary-color;
 // $topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: $font-weight-bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
-// $topbar-dropdown-label-bg: $oil;
+$topbar-dropdown-label-bg: $secondary-color;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
@@ -1441,3 +1481,4 @@ $include-html-global-classes: $include-html-classes;
 // $include-accessibility-classes: true;
 
 @import 'foundation';
+@import 'stylesheet';

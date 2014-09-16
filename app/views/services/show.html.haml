@@ -1,9 +1,12 @@
-#service
-  %h1#service_name= @service.name
-  = link_to "#{@service.website}"
-  %h3= @service.location
-  %h3= @service.phone
-  %p= @service.description
-  %p= @service.offered_services
-
-= render partial: "services/map"
+.service_show_wrapper
+  .service
+    %h1#service_name= @service.name
+    .service_location_contact
+      .service_link
+        = link_to "#{@service.website}"
+      %h3= @service.location
+      %h3= @service.phone
+    %p= @service.description
+    %p= @service.offered_services
+  .service_map
+    = render partial: "services/map"

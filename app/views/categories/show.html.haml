@@ -1,5 +1,9 @@
-%h1= @category.name
-- @category.services.each do |var|
-  = link_to "#{var.name}", service_path(var)
-
-= render partial: "categories/map"
+.category_show_wrapper
+  %h1.category_title= @category.name
+  .service_list
+    %ul.stack.button-group.individual_service
+      - @category.services.each do |var|
+        %li
+          %a.button{:href => service_path(var)}= var.name
+  .map_view
+    = render partial: "categories/map"

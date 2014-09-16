@@ -18,19 +18,16 @@
             %a= link_to "Support Nashville", root_path
         %li.toggle-topbar.menu-icon
           %a{:href => "#"}
-            %span Menu
+            %span Navigation
       %section.top-bar-section
 
         %ul.right
-          %li
-            %a{:href => "#"} Search
-          %li
-            %a{:href => "#"} Map
-          %li
-            %a{:href => "#"} About
-        %ul.left
           %li.has-dropdown
             %a= link_to "Services", categories_path
             - if @categories
               %ul.dropdown= render @categories
+          %li
+            %a{:href => "#"} About
+          %li
+            %a{:href => "#"} Search
     = yield

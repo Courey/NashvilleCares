@@ -6,6 +6,9 @@
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
     markers = handler.addMarkers(#{raw @hash.to_json});
-    handler.getMap().setZoom(9);
-    handler.getMap().setCenter(new google.maps.LatLng(36.17, -86.77));
+
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(15);
+    // handler.getMap().setCenter(new google.maps.LatLng(36.17, -86.77));
   });
