@@ -8,7 +8,7 @@ feature "nav bar includes dynamically created dropdown list of categories" do
 
   scenario "nav ul contains dynamically created categories" do
     visit root_path
-    within("ul.left") do
+    within("ul.right") do
       page.should have_content("Food")
     end
   end

@@ -8,7 +8,6 @@ feature "Welcome Page" do
     expect(page).to have_link("Support Nashville")
     expect(page).to have_link("Services")
     expect(page).to have_link("Search")
-    expect(page).to have_link("Map")
     expect(page).to have_link("About")
   end
 end

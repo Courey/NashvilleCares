@@ -23,7 +23,7 @@ feature "User navigates to individual services show page." do
     current_path.should == category_path(@category)
     click_on "Food Place"
     current_path.should == service_path(@full_service)
-    within("#service") do
+    within(".service") do
       page.should have_content("Food Place")
       page.should have_content("123 Main St. Nashville, TN 37205")
       page.should have_content("www.foodplace.com")
