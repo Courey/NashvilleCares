@@ -1,0 +1,197 @@
+@import url(http://fonts.googleapis.com/css?family=Lato);
+// font-family: 'Lato', sans-serif;
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+// font-family: 'Oswald', sans-serif;
+@import "foundation/components/grid";
+body{
+  background-image: url('brickwall.png');
+}
+nav.top-bar{
+  ul{
+    li{
+      background-color: $secondary-color;
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+  .button{
+    a{
+      text-decoration: none;
+    }
+  }
+}
+
+.logo{
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  height: 200px;
+  background-image: url('nashville_window.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tag_line{
+  text-align: center;
+}
+
+.top-bar-section ul li > a.button, .category_wrapper ul li > a.button{
+  background-color: #333333;
+}
+
+h1{
+  font-family: 'Oswald', sans-serif;
+}
+
+p{
+  font-family: 'Lato', sans-serif;
+}
+
+.company_name{
+  text-align: center;
+}
+.category_wrapper{
+  margin-top: 3em;
+  width: 100%;
+  .service_list{
+  }
+  ul{
+    margin-left: 1em;
+    li{
+      list-style-type: none;
+      .button_link{
+        width: 100%;
+      }
+      .button{
+        background-color: #29516d;
+        width: 75%;
+        a{
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.category_show_wrapper{
+  @include grid-row();
+  $left-column-size: 4;
+  $right-column-size: 12 - $left-column-size;
+  h1.category_title{
+    text-align: center;
+    border-bottom: 1px dotted black;
+  }
+  .service_list{
+    @include grid-column($left-column-size);
+    .individual_service{
+      min-width: 120px;
+      max-width: 500px;
+      max-height: 400px;
+      overflow: scroll;
+    }
+
+  }
+  .map_view{
+    @include grid-column($right-column-size);
+    div#map_wrapper{
+      img,
+      object,
+      embed {
+        max-width: none !important;
+        height: auto;
+      }
+      width: 800px;
+      height: 400px;
+      #map{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.service_show_wrapper{
+  @include grid-row();
+  $left-column-size: 4;
+  $right-column-size: 12 - $left-column-size;
+  .service{
+    #service_name, .service_location_contact{
+      border-bottom: 1px dotted black;
+    }
+    @include grid-column($left-column-size);
+    // border-right: 1px solid black;
+    // border-bottom: 1px solid black;
+    .service_link, h1, h3{
+      text-align: center;
+    }
+    h3{
+      font-size: 18px;
+    }
+  }
+  .service_map{
+    @include grid-column($right-column-size);
+    margin-top: 1em;
+    div#map_wrapper{
+      img,
+      object,
+      embed {
+        max-width: none !important;
+        height: auto;
+      }
+      width: 600px;
+      height: 300px;
+      #map{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+$small-range: (0em, 30em); /* 0, 640px */
+$small-only: "#{$screen} and (max-width: 40em)" !default;
+
+@media #{$small-only} {
+  .service_show_wrapper{
+    .service_map{
+      @include grid-column(12);
+      margin-top: 1em;
+      div#map_wrapper{
+        img,
+        object,
+        embed {
+          max-width: none !important;
+          height: auto;
+        }
+        width: 300px;
+        height: 150px;
+        #map{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .category_show_wrapper{
+    .service_list, .map_view{
+      @include grid-column(12);
+      div#map_wrapper{
+        img,
+        object,
+        embed {
+          max-width: none !important;
+          height: auto;
+        }
+        width: 300px;
+        height: 150px;
+        #map{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
