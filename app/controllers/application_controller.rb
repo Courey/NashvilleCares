@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :load_categories
 
   protected
+
   def load_categories
     @categories = Category.all
   end

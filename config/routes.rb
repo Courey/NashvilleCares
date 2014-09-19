@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :categories, only: [:index, :show]
-  resources :services, only: [:show]
+  resources :services, only: [:show, :index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

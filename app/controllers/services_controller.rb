@@ -7,4 +7,8 @@ class ServicesController < ApplicationController
       marker.infowindow service.name
     end
   end
+
+  def index
+    @services = Service.search(params[:search])
+  end
 end

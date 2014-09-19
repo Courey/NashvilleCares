@@ -28,6 +28,5 @@
               %ul.dropdown= render @categories
           %li
             %a{:href => "#"} About
-          %li
-            %a{:href => "#"} Search
+          %li.search= render partial: "services/search_form"
     = yield

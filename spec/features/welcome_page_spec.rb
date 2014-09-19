@@ -7,7 +7,7 @@ feature "Welcome Page" do
     visit root_path
     expect(page).to have_link("Support Nashville")
     expect(page).to have_link("Services")
-    expect(page).to have_link("Search")
+    expect(page).to have_button("Search")
     expect(page).to have_link("About")
   end
 end
