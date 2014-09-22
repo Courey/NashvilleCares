@@ -3,10 +3,15 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 // font-family: 'Oswald', sans-serif;
 @import "foundation/components/grid";
+
 body{
   background-image: url('brickwall.png');
 }
+
 nav.top-bar{
+  ul.right{
+    background-color: $secondary-color;
+  }
   ul{
     li{
       background-color: $secondary-color;
@@ -14,10 +19,55 @@ nav.top-bar{
         text-decoration: none;
       }
     }
+    li.search{
+      width: 160px;
+      #search{
+        width: 100px;
+        float: left;
+      }
+      .submit_button{
+        input{
+          font-family: 'Lato', sans-serif;
+          width: 60px;
+          float: right;
+          border-left: 1px solid black;
+        }
+      }
+    }
   }
   .button{
     a{
       text-decoration: none;
+    }
+  }
+}
+
+#search_results{
+  .no_results{
+    width: 100%;
+    text-align: center;
+    margin-top: 3em;
+  }
+  .service_index_item{
+    background-color: rgba(51,51,51,.1);
+    margin-top: 1em;;
+    border: 1px solid $secondary-color;
+    .service_index_link{
+      background-color: rgba(51,51,51,.2);
+      border-bottom: 1px dotted $secondary-color;
+      padding-left: .5em;
+      a{
+        color: $secondary-color;
+      }
+      a:hover{
+        color: #909090;
+      }
+      a:visited{
+        color: #42425f;
+      }
+    }
+    .service_index_description, .service_index_offered_services{
+      padding-left: .25em;
     }
   }
 }
@@ -38,7 +88,7 @@ nav.top-bar{
 }
 
 .top-bar-section ul li > a.button, .category_wrapper ul li > a.button{
-  background-color: #333333;
+  background-color: $secondary-color;
 }
 
 h1{
@@ -52,6 +102,7 @@ p{
 .company_name{
   text-align: center;
 }
+
 .category_wrapper{
   margin-top: 3em;
   width: 100%;
@@ -78,14 +129,19 @@ p{
 
 .category_show_wrapper{
   @include grid-row();
-  $left-column-size: 4;
+  margin-right: 0px;
+  margin-left: 0px;
+  $left-column-size: 3;
   $right-column-size: 12 - $left-column-size;
+
   h1.category_title{
+    width: 100%;
     text-align: center;
-    border-bottom: 1px dotted black;
+    border-bottom: 1px dotted $secondary-color;
   }
   .service_list{
     @include grid-column($left-column-size);
+    padding: 0px !important;
     .individual_service{
       min-width: 120px;
       max-width: 500px;
@@ -96,6 +152,7 @@ p{
   }
   .map_view{
     @include grid-column($right-column-size);
+    padding: 0px !important;
     div#map_wrapper{
       img,
       object,
@@ -118,12 +175,27 @@ p{
   $left-column-size: 4;
   $right-column-size: 12 - $left-column-size;
   .service{
-    #service_name, .service_location_contact{
-      border-bottom: 1px dotted black;
-    }
     @include grid-column($left-column-size);
-    // border-right: 1px solid black;
-    // border-bottom: 1px solid black;
+    margin-top: 1em;
+    padding: 0px !important;
+    background-color: rgba(51,51,51,.1);
+    .service_title_box{
+      height: 100%;
+
+      background-color: rgba(51,51,51,.15);
+      border-bottom: 1px dotted $secondary-color;
+      #service_name{
+        height: 100%;
+        margin-top: 0;
+      }
+    }
+    p{
+      padding-right: .5em;
+      padding-left: .5em;
+    }
+    .service_location_contact{
+      border-bottom: 1px dotted $secondary-color;
+    }
     .service_link, h1, h3{
       text-align: center;
     }
@@ -131,9 +203,10 @@ p{
       font-size: 18px;
     }
   }
+
   .service_map{
     @include grid-column($right-column-size);
-    margin-top: 1em;
+    padding: 0px !important;
     div#map_wrapper{
       img,
       object,
@@ -150,15 +223,34 @@ p{
     }
   }
 }
+$map-width: 100vw;
+$map-height: $map-width/2;
 
 $small-range: (0em, 30em); /* 0, 640px */
+$medium-range: (40.063em, 64em); /* 641px, 1024px */
+
 $small-only: "#{$screen} and (max-width: 40em)" !default;
+$medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})" !default;
 
 @media #{$small-only} {
+  nav.top-bar{
+    .top-bar-section{
+      ul.right{
+        li.search{
+          float: right;
+        }
+      }
+    }
+  }
   .service_show_wrapper{
-    .service_map{
+    @include grid-row();
+    .service_list{
+      width: $map-width;
+    }
+    .service_map, .service{
       @include grid-column(12);
-      margin-top: 1em;
+
+      margin-top: 0;
       div#map_wrapper{
         img,
         object,
@@ -166,8 +258,8 @@ $small-only: "#{$screen} and (max-width: 40em)" !default;
           max-width: none !important;
           height: auto;
         }
-        width: 300px;
-        height: 150px;
+        width: 20em;
+        height: 10em;
         #map{
           width: 100%;
           height: 100%;
@@ -175,6 +267,7 @@ $small-only: "#{$screen} and (max-width: 40em)" !default;
       }
     }
   }
+
   .category_show_wrapper{
     .service_list, .map_view{
       @include grid-column(12);
@@ -185,12 +278,78 @@ $small-only: "#{$screen} and (max-width: 40em)" !default;
           max-width: none !important;
           height: auto;
         }
-        width: 300px;
-        height: 150px;
+        width: 20em;
+        height: 10em;
         #map{
           width: 100%;
           height: 100%;
         }
+      }
+    }
+  }
+}
+
+$screen-width: 100vw;
+
+@media #{$medium-only} {
+  nav.top-bar{
+    .top-bar-section{
+      ul.right{
+        li.search{
+          float: right;
+        }
+      }
+    }
+  }
+  .service_show_wrapper{
+    .service{
+    }
+    .service_map, .service{
+      @include grid-column(12);
+      padding-left: 0;
+      padding-right: 0;
+      margin-top: 0;
+      div#map_wrapper{
+        img,
+        object,
+        embed {
+          max-width: none !important;
+          height: auto;
+        }
+        width: $map-width;
+        height: $map-height;
+        #map{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .category_show_wrapper{
+
+    .service_list, .map_view{
+      @include grid-column(12);
+      div#map_wrapper{
+        img,
+        object,
+        embed {
+          max-width: none !important;
+          height: auto;
+        }
+        width: $map-width;
+        height: $map-height;
+        #map{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .service_list{
+      .individual_service{
+        max-width: $screen-width;
+        max-height: 50%;
+        overflow: scroll;
       }
     }
   }

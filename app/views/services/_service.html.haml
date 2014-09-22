@@ -1,1 +1,7 @@
-%p= service.name
+.service_index_item.row
+  .service_index_link
+    =link_to service.name, service_path(service)
+  .service_index_description
+    = service.description
+  .service_index_offered_services
+    = service.offered_services

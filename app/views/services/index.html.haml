@@ -1,1 +1,5 @@
-.service_index= render @services
+#search_results
+  - if @services.length >=1
+    .service_index= render @services
+  - else
+    %p.no_results No results were found. Please try your search with different keywords.
