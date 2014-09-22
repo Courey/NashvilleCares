@@ -5,7 +5,7 @@
 @import "foundation/components/grid";
 
 body{
-  background-image: url('brickwall.png');
+  background-image: asset-url('brickwall.png');
 }
 
 nav.top-bar{
@@ -77,7 +77,7 @@ nav.top-bar{
   margin-top: 2em;
   margin-bottom: 2em;
   height: 200px;
-  background-image: url('nashville_window.png');
+  background-image: asset-url('nashville_window.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
