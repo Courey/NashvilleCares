@@ -27,6 +27,7 @@ group :test do
   gem 'fabrication'
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :production do

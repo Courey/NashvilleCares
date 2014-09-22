@@ -17,7 +17,6 @@ feature "admin adds service via activeadmin" do
     click_link "New Service"
     select "Food", :from => "service[category_id]"
     fill_in "Name", with: "Test Service"
-    fill_in "Location", with: "123 Main St. Somewhere, MI 11111"
     fill_in "Website", with: "www.test.com"
     fill_in "Phone", with: "123-456-7890"
     fill_in "Description", with: "This is a test. This is only a test."
@@ -27,7 +26,6 @@ feature "admin adds service via activeadmin" do
     page.should have_content("Service was successfully created.")
     within(".attributes_table") do
       page.should have_content("Test Service")
-      page.should have_content("123 Main St. Somewhere, MI 11111")
       page.should have_content("www.test.com")
       page.should have_content("123-456-7890")
       page.should have_content("This is a test. This is only a test.")
@@ -42,7 +40,6 @@ feature "admin adds service via activeadmin" do
     current_path.should eq admin_services_path
     click_link "New Service"
     fill_in "Name", with: "Test Service"
-    fill_in "Location", with: "123 Main St. Somewhere, MI 11111"
     fill_in "Website", with: "www.test.com"
     fill_in "Phone", with: "123-456-7890"
     fill_in "Description", with: "This is a test. This is only a test."
@@ -58,7 +55,6 @@ feature "admin adds service via activeadmin" do
     current_path.should eq admin_services_path
     click_link "New Service"
     select "Food", :from => "service[category_id]"
-    fill_in "Location", with: "123 Main St. Somewhere, MI 11111"
     fill_in "Website", with: "www.test.com"
     fill_in "Phone", with: "123-456-7890"
     fill_in "Description", with: "This is a test. This is only a test."

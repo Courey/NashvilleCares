@@ -2,9 +2,9 @@ feature "User navigates to individual services show page." do
   background do
     @category = Fabricate(:category, name: "Food")
     @service = Fabricate(:service, name: "Mom's House", category: @category)
-    @full_service = Fabricate(:service, name: "Food Bank A", category: @category, location: "331 Great Circle Rd. Nashville, TN", website: "www.foodplace.com", phone: "615-555-5555", description: "a place to get food stuff.", offered_services: "food for people that don't have any")
-    Fabricate(:service, name: "Food Bank B", category: @category, location: "3605 Hilsboro Pike Nashville, TN", website: "www.foodplace.com", phone: "615-555-5555", description: "a place to get food stuff.", offered_services: "food for the poor")
-    Fabricate(:service, name: "Food Bank C", category: @category, location: "37 Peabody St. Nashville, TN", website: "www.foodplace.com", phone: "615-555-5555", description: "a place to get food stuff.", offered_services: "canned food for low income population")
+    @full_service = Fabricate(:service, name: "Food Bank A", category: @category, website: "www.foodplace.com", phone: "615-555-5555", description: "a place to get food stuff.", offered_services: "food for people that don't have any")
+    Fabricate(:service, name: "Food Bank B", category: @category, website: "www.foodplace.com", phone: "615-555-5555", description: "a place to get food stuff.", offered_services: "food for the poor")
+    Fabricate(:service, name: "Food Bank C", category: @category, website: "www.foodplace.com", phone: "615-555-5555", description: "a place to get food stuff.", offered_services: "canned food for low income population")
     visit root_path
   end
 
