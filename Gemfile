@@ -28,3 +28,7 @@ group :test do
   gem 'capybara'
   gem 'shoulda-matchers'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
