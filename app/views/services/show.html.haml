@@ -7,7 +7,11 @@
         = link_to "#{@service.website}"
       %h3= @service.location
       %h3= @service.phone
-    %p= @service.description
-    %p= @service.offered_services
+
   .service_map
     = render partial: "services/map"
+.service_description
+  .description
+    %p= @service.description
+  .offered_services
+    %p= @service.offered_services

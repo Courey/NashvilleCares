@@ -172,31 +172,24 @@ p{
 }
 
 .service_show_wrapper{
+
   @include grid-row();
   $left-column-size: 4;
   $right-column-size: 12 - $left-column-size;
   .service{
+    height: 300px;
     @include grid-column($left-column-size);
     margin-top: 1em;
     padding: 0px !important;
     border: 2px solid rgba(51,51,51,.5);
     background-color: rgba(51,51,51,.1);
     .service_title_box{
-      height: 100%;
-
       background-color: rgba(51,51,51,.15);
       border-bottom: 1px dotted $secondary-color;
       #service_name{
         height: 100%;
         margin-top: 0;
       }
-    }
-    p{
-      padding-right: .5em;
-      padding-left: .5em;
-    }
-    .service_location_contact{
-      border-bottom: 1px dotted $secondary-color;
     }
     .service_link, h1, h3{
       text-align: center;
@@ -208,7 +201,9 @@ p{
 
   .service_map{
     @include grid-column($right-column-size);
-    padding: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 4em;
     div#map_wrapper{
       border: 2px solid rgba(51,51,51,.5);
       img,
@@ -226,6 +221,23 @@ p{
     }
   }
 }
+.service_description{
+  @include grid-row();
+  border: 2px solid rgba(51,51,51,.5);
+  background-color: rgba(51,51,51,.1);
+  width: 98.125rem;
+  p{
+    padding-right: .5em;
+    padding-left: .5em;
+  }
+  .description, .offered_services{
+    margin-top: .5em;
+  }
+  .description{
+    border-bottom: 1px dotted $secondary-color;
+  }
+}
+
 $map-width: 100vw;
 $map-height: $map-width/2;
 
@@ -242,9 +254,9 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
         li.search{
           padding: .25em;
           width: 170px;
-
-          margin-bottom: 2em;
-
+          form{
+            margin-bottom: 1em;
+          }
 
         }
       }
@@ -256,20 +268,24 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
       padding: 0px !important;
       width: $map-width;
     }
+    .service{
+      height: 100%;
+    }
     .service_map, .service{
       padding: 0px !important;
       @include grid-column(12);
+
       margin-top: 0;
       div#map_wrapper{
-        border: 0px;
+        border-top: 0px;
         img,
         object,
         embed {
           max-width: none !important;
           height: auto;
         }
-        width: 20em;
-        height: 10em;
+        width: $map-width;
+        height: $map-height;
         #map{
           width: 100%;
           height: 100%;
@@ -278,20 +294,24 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
     }
   }
 
+  .service_description{
+    border-top: 0px;
+    width: $map-width;
+  }
+
   .category_show_wrapper{
     .service_list, .map_view{
       padding: 0px !important;
       @include grid-column(12);
       div#map_wrapper{
-        border: 0px;
         img,
         object,
         embed {
           max-width: none !important;
           height: auto;
         }
-        width: 20em;
-        height: 10em;
+        width: $map-width;
+        height: $map-height;
         #map{
           width: 100%;
           height: 100%;
@@ -316,6 +336,7 @@ $screen-width: 100vw;
   .service_show_wrapper{
     .service{
       padding: 0px !important;
+      height: 100%;
     }
     .service_map, .service{
       padding: 0px !important;
@@ -324,6 +345,9 @@ $screen-width: 100vw;
       padding-right: 0;
       margin-top: 0;
       div#map_wrapper{
+        // border-right: 0px;
+        // border-left: 0px;
+        border-top: 0px;
         img,
         object,
         embed {
@@ -338,6 +362,10 @@ $screen-width: 100vw;
         }
       }
     }
+  }
+  .service_description{
+    border-top: 0px;
+    width: $map-width;
   }
 
   .category_show_wrapper{
