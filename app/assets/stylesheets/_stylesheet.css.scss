@@ -135,13 +135,13 @@ p{
   $right-column-size: 12 - $left-column-size;
 
   h1.category_title{
-    width: 100%;
+    width: 100vw;
     text-align: center;
     border-bottom: 1px dotted $secondary-color;
   }
   .service_list{
     @include grid-column($left-column-size);
-    padding: 0px !important;
+
     .individual_service{
       min-width: 120px;
       max-width: 500px;
@@ -152,8 +152,9 @@ p{
   }
   .map_view{
     @include grid-column($right-column-size);
-    padding: 0px !important;
+
     div#map_wrapper{
+      border: 2px solid rgba(51,51,51,.5);
       img,
       object,
       embed {
@@ -178,6 +179,7 @@ p{
     @include grid-column($left-column-size);
     margin-top: 1em;
     padding: 0px !important;
+    border: 2px solid rgba(51,51,51,.5);
     background-color: rgba(51,51,51,.1);
     .service_title_box{
       height: 100%;
@@ -206,8 +208,9 @@ p{
 
   .service_map{
     @include grid-column($right-column-size);
-    padding: 0px !important;
+    padding: 1em;
     div#map_wrapper{
+      border: 2px solid rgba(51,51,51,.5);
       img,
       object,
       embed {
@@ -237,7 +240,12 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
     .top-bar-section{
       ul.right{
         li.search{
-          float: right;
+          padding: .25em;
+          width: 170px;
+
+          margin-bottom: 2em;
+
+
         }
       }
     }
@@ -245,13 +253,15 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
   .service_show_wrapper{
     @include grid-row();
     .service_list{
+      padding: 0px !important;
       width: $map-width;
     }
     .service_map, .service{
+      padding: 0px !important;
       @include grid-column(12);
-
       margin-top: 0;
       div#map_wrapper{
+        border: 0px;
         img,
         object,
         embed {
@@ -270,8 +280,10 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
 
   .category_show_wrapper{
     .service_list, .map_view{
+      padding: 0px !important;
       @include grid-column(12);
       div#map_wrapper{
+        border: 0px;
         img,
         object,
         embed {
@@ -303,8 +315,10 @@ $screen-width: 100vw;
   }
   .service_show_wrapper{
     .service{
+      padding: 0px !important;
     }
     .service_map, .service{
+      padding: 0px !important;
       @include grid-column(12);
       padding-left: 0;
       padding-right: 0;
@@ -329,6 +343,7 @@ $screen-width: 100vw;
   .category_show_wrapper{
 
     .service_list, .map_view{
+      padding: 0px !important;
       @include grid-column(12);
       div#map_wrapper{
         img,
@@ -346,6 +361,7 @@ $screen-width: 100vw;
       }
     }
     .service_list{
+      padding: 0px !important;
       .individual_service{
         max-width: $screen-width;
         max-height: 50%;
