@@ -277,6 +277,7 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
 
       margin-top: 0;
       div#map_wrapper{
+        margin: 0 auto;
         border-top: 0px;
         img,
         object,
@@ -300,10 +301,14 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
   }
 
   .category_show_wrapper{
+    .map_view{
+      margin: 0 auto;
+    }
     .service_list, .map_view{
       padding: 0px !important;
       @include grid-column(12);
       div#map_wrapper{
+        margin: 0 auto;
         img,
         object,
         embed {
@@ -324,18 +329,19 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
 $screen-width: 100vw;
 
 @media #{$medium-only} {
-nav.top-bar{
-  .top-bar-section{
-    ul.right{
-      li.search{
-        padding: .3em;
-        width: 170px;
-        margin-bottom: 1em;
-      }
-    }
-  }
-}
+// nav.top-bar{
+//   .top-bar-section{
+//     ul.right{
+//       li.search{
+//         padding: .3em;
+//         width: 170px;
+//         margin-bottom: 1em;
+//       }
+//     }
+//   }
+// }
   .service_show_wrapper{
+    border-bottom: 0px;
     .service{
       padding: 0px !important;
       height: 100%;
@@ -347,15 +353,17 @@ nav.top-bar{
       padding-right: 0;
       margin-top: 0;
       div#map_wrapper{
+        margin: 0 auto;
         border-top: 0px;
+        border-bottom: 0px;
         img,
         object,
         embed {
           max-width: none !important;
           height: auto;
         }
-        width: 60em;
-        height: 30em;
+        width: 48em;
+        height: 24em;
         #map{
           width: 100%;
           height: 100%;
@@ -364,24 +372,24 @@ nav.top-bar{
     }
   }
   .service_description{
-    border-top: 0px;
     width: $map-width;
   }
 
   .category_show_wrapper{
-
     .service_list, .map_view{
       padding: 0px !important;
       @include grid-column(12);
+
       div#map_wrapper{
+
         img,
         object,
         embed {
           max-width: none !important;
           height: auto;
         }
-        width: 60em;
-        height: 30em;
+        width: 48em;
+        height: 24em;
         #map{
           width: 100%;
           height: 100%;
