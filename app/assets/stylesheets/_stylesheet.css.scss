@@ -285,8 +285,8 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
           max-width: none !important;
           height: auto;
         }
-        width: $map-width;
-        height: $map-height;
+        width: 20em;
+        height: 10em;
         #map{
           width: 100%;
           height: 100%;
