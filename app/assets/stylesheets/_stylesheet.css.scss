@@ -177,7 +177,7 @@ p{
   $left-column-size: 4;
   $right-column-size: 12 - $left-column-size;
   .service{
-    height: 300px;
+    height: 325px;
     @include grid-column($left-column-size);
     margin-top: 1em;
     padding: 0px !important;
@@ -188,7 +188,7 @@ p{
       border-bottom: 1px dotted $secondary-color;
       #service_name{
         height: 100%;
-        font-size: 20px;
+        font-size: 24px;
         margin-top: 0;
       }
     }
@@ -204,7 +204,7 @@ p{
     @include grid-column($right-column-size);
     padding-top: 1em;
     padding-bottom: 1em;
-    padding-left: 4em;
+    padding-left: 1em;
     div#map_wrapper{
       border: 2px solid rgba(51,51,51,.5);
       img,
@@ -213,8 +213,8 @@ p{
         max-width: none !important;
         height: auto;
       }
-      width: 600px;
-      height: 300px;
+      width: 650px;
+      height: 325px;
       #map{
         width: 100%;
         height: 100%;
