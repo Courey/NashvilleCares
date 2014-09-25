@@ -27,7 +27,5 @@
             %a= link_to "Services", categories_path
             - if @categories
               %ul.dropdown= render @categories
-          %li
-            %a{:href => "#"} About
           %li.search= render partial: "services/search_form"
     = yield

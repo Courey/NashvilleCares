@@ -21,6 +21,7 @@ nav.top-bar{
     }
     li.search{
       width: 160px;
+
       #search{
         width: 100px;
         float: left;
@@ -172,7 +173,6 @@ p{
 }
 
 .service_show_wrapper{
-
   @include grid-row();
   $left-column-size: 4;
   $right-column-size: 12 - $left-column-size;
@@ -222,6 +222,7 @@ p{
     }
   }
 }
+
 .service_description{
   @include grid-row();
   border: 2px solid rgba(51,51,51,.5);
@@ -254,12 +255,9 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
     .top-bar-section{
       ul.right{
         li.search{
-          padding: .25em;
+          padding: .3em;
           width: 170px;
-          form{
-            margin-bottom: 1em;
-          }
-
+          margin-bottom: 1em;
         }
       }
     }
@@ -326,15 +324,17 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
 $screen-width: 100vw;
 
 @media #{$medium-only} {
-  nav.top-bar{
-    .top-bar-section{
-      ul.right{
-        li.search{
-          float: right;
-        }
+nav.top-bar{
+  .top-bar-section{
+    ul.right{
+      li.search{
+        padding: .3em;
+        width: 170px;
+        margin-bottom: 1em;
       }
     }
   }
+}
   .service_show_wrapper{
     .service{
       padding: 0px !important;
